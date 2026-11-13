@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SnapRec – Full Page Screenshot & Screen Recorder for Chrome</title>
+    <meta
+      name="description"
+      content="SnapRec is a Chrome extension for scrolling full-page screenshots and tab screen recording. Everything is processed locally in your browser — nothing is uploaded."
+    />
+    <meta name="robots" content="index, follow" />
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --card: #ffffff;
+        --text: #1b1d21;
+        --soft: #6b7078;
+        --line: rgba(0, 0, 0, 0.1);
+        --accent: #185fa5;
+        --ok: #17845c;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.65 -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      }
+      .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+      header.top {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 18px 0;
+      }
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+      .mark {
+        width: 34px; height: 34px; border-radius: 10px; background: var(--accent);
+        position: relative; flex: none;
+      }
+      .mark::before {
+        content: ""; position: absolute; inset: 9px; border: 2px solid #fff; border-radius: 4px;
+      }
+      .mark::after {
+        content: ""; position: absolute; width: 6px; height: 6px; border-radius: 50%;
+        background: #fff; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      }
+      nav a { color: var(--soft); text-decoration: none; margin-left: 18px; font-size: 14px; }
+      nav a:hover { color: var(--text); }
+
+      .hero { padding: 44px 0 30px; }
+      h1 { font-size: 32px; line-height: 1.25; margin: 0 0 14px; letter-spacing: -0.02em; }
+      .hero p { color: var(--soft); font-size: 17px; max-width: 620px; margin: 0 0 22px; }
+      .cta {
+        display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+        font-weight: 500; padding: 12px 22px; border-radius: 10px; font-size: 15px;
+      }
+      .cta:hover { background: #124b83; }
+      .cta.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); margin-left: 10px; }
+      .cta.ghost:hover { background: rgba(24, 95, 165, 0.06); }
+
+      section { padding: 26px 0; }
+      h2 { font-size: 21px; margin: 0 0 14px; letter-spacing: -0.01em; }
+      .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+      .card {
+        background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px;
+      }
+      .card h3 { margin: 0 0 6px; font-size: 16px; }
+      .card p { margin: 0; color: var(--soft); font-size: 14px; }
+
+      .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; max-width: 560px; }
+      .price { text-align: center; padding: 24px 18px; }
+      .price .num { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; }
+      .price .per { color: var(--soft); font-size: 14px; }
+      .price ul { list-style: none; padding: 0; margin: 14px 0 0; color: var(--soft); font-size: 14px; }
+      .price li { margin: 4px 0; }
+      .price .flag {
+        display: inline-block; background: var(--ok); color: #fff; font-size: 11px;
+        padding: 2px 8px; border-radius: 99px; margin-bottom: 8px;
+      }
+
+      .policy { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; }
+      .policy h3 { margin: 0 0 8px; font-size: 16px; }
+      .policy p, .policy li { color: var(--soft); font-size: 14px; margin: 6px 0; }
+      .policy ul { margin: 6px 0; padding-left: 20px; }
+
+      footer {
+        border-top: 1px solid var(--line); margin-top: 30px; padding: 20px 0 40px;
+        color: var(--soft); font-size: 13px;
+      }
+      footer a { color: var(--accent); text-decoration: none; }
+      a { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div class="brand"><span class="mark" aria-hidden="true"></span>SnapRec</div>
+        <nav>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#policies">Terms &amp; Privacy</a>
+          <a href="#support">Support</a>
+        </nav>
+      </header>
+
+      <div class="hero">
+        <h1>Full-page screenshots &amp; tab screen recording, right in Chrome.</h1>
+        <p>
+          SnapRec scrolls and stitches the entire page into one image — including infinite-scroll feeds —
+          and records the current tab to a video file. Everything is processed locally in your browser.
+        </p>
+        <!-- 上架后把两个链接换成商店 listing 的真实地址 -->
+        <a class="cta" href="REPLACE_CHROME_WEB_STORE_URL">Install from Chrome Web Store</a>
+        <a class="cta ghost" href="#pricing">See pricing</a>
+      </div>
+
+      <section id="features">
+        <h2>What it does</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Full-page screenshot</h3>
+            <p>Automatically scrolls the page, waits for lazy-loaded content and stitches everything into a single PNG. Press Esc anytime to stop and save what has been captured.</p>
+          </div>
+          <div class="card">
+            <h3>Tab screen recording</h3>
+            <p>Records the current tab with optional tab audio, saved as a WebM video in your downloads folder. The free plan includes 60 seconds per recording.</p>
+          </div>
+          <div class="card">
+            <h3>Private by design</h3>
+            <p>Screenshots and recordings never leave your computer. No account, no uploads, no tracking. The only network request is a license validation check.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <h2>Pricing</h2>
+        <div class="price-grid">
+          <div class="card price">
+            <div class="num">Free</div>
+            <div class="per">forever</div>
+            <ul>
+              <li>Visible-area screenshots</li>
+              <li>Tab recording up to 60 s</li>
+            </ul>
+          </div>
+          <div class="card price">
+            <span class="flag">Most popular</span>
+            <div class="num">$9</div>
+            <div class="per">per year</div>
+            <ul>
+              <li>Unlimited full-page screenshots</li>
+              <li>Recording up to 60 min</li>
+              <li>Cancel anytime</li>
+            </ul>
+          </div>
+          <div class="card price">
+            <div class="num">$1</div>
+            <div class="per">per month</div>
+            <ul>
+              <li>Same Pro features</li>
+              <li>Billed monthly</li>
+              <li>Cancel anytime</li>
+            </ul>
+          </div>
+        </div>
+        <p style="color: var(--soft); font-size: 13px; max-width: 620px;">
+          Payments and invoicing are handled by Dodo Payments as Merchant of Record. Visa, Mastercard,
+          Apple Pay, Google Pay and more are accepted. Subscriptions can be cancelled anytime from the
+          Dodo customer portal linked in your receipt email.
+        </p>
+      </section>
+
+      <section id="policies">
+        <h2>Terms, Privacy &amp; Refunds</h2>
+
+        <div class="policy">
+          <h3>Privacy Policy</h3>
+          <ul>
+            <li>SnapRec does <b>not</b> collect, store or transmit your screenshots, recordings or browsing history. All capture and processing happens locally in your browser.</li>
+            <li>The only data sent over the network is your <b>license key</b>, which is sent to <a href="https://www.dodopayments.com" rel="noopener">Dodo Payments</a> to verify your subscription status. No other identifiers, analytics or telemetry are collected.</li>
+            <li>Your preferences (e.g. audio on/off) are stored locally in your browser using <code>chrome.storage</code> and never synced to any server.</li>
+            <li>Contact: <b>865835961@qq.com</b> for any privacy question or data request.</li>
+          </ul>
+        </div>
+
+        <div class="policy">
+          <h3>Terms of Service</h3>
+          <ul>
+            <li>SnapRec is licensed per user for use in your own browsers. Do not redistribute or resell the extension or your license key.</li>
+            <li>Pro features (full-page screenshots, recordings beyond 60 seconds) require an active subscription. The subscription renews automatically until cancelled.</li>
+            <li>You may cancel anytime from the Dodo customer portal; the Pro features remain available until the end of the paid period.</li>
+            <li>The extension is provided "as is" without warranties of any kind. We are not liable for damages arising from its use.</li>
+          </ul>
+        </div>
+
+        <div class="policy">
+          <h3>Refund Policy</h3>
+          <ul>
+            <li>If the product does not work for you, contact <b>865835961@qq.com</b> within <b>7 days</b> of purchase and we will issue a full refund.</li>
+            <li>Refunds are processed by Dodo Payments; the license key is deactivated afterwards.</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer id="support">
+        <p>
+          Questions, refunds or license issues: <b>865835961@qq.com</b> ·
+          Seller: <b>865835961@qq.com</b> (individual) · Payments processed by Dodo Payments as Merchant of Record.
+        </p>
+        <p>© 2026 SnapRec. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
